@@ -11,6 +11,9 @@ test: build
 	@lambda/build
 	@cd test && npm run build && cdk deploy
 
+synth: build
+	@lambda/build
+	@cd test && npm run build && cdk synth -v
 clean:
 	@rm -rf node_modules package-lock.json test/node_modules test/package-lock.json
 
