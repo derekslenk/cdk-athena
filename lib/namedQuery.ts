@@ -43,7 +43,7 @@ export class NamedQuery extends Construct {
   /**
    * The lambda function that is created
    */
-  public readonly lambda: aws_lambda.IFunction;
+  public readonly lambdaFunc: aws_lambda.IFunction;
   /**
    * Name of the query
    */
@@ -60,11 +60,11 @@ export class NamedQuery extends Construct {
   constructor(scope: Construct, id: string, props: NamedQueryProps) {
     super(scope, id);
 
-    this.lambda = ensureLambda(this);
+    this.lambdaFunc = ensureLambda(this);
     this.name = props.name;
 
     const queryProps: any = {
-      serviceToken: this.lambda.functionArn,
+      serviceToken: this.lambdaFunc.functionArn,
       resourceType: resourceType,
       properties: {
         Name: this.name,
