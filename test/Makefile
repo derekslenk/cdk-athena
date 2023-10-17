@@ -17,6 +17,8 @@ diff: build
 	@npm run cdk -- diff
 
 deploy: build
+	@echo Installing CDK
+	@npm install aws-cdk
 	@echo Deploying application...
 	@npm run cdk -- deploy --require-approval never
 
